@@ -1,70 +1,63 @@
+# The Frontier Notes
 
-# FN—001 | The Safety Evaluation Gap
+### FN—001 | The Safety Evaluation Gap
 
-**The Frontier Notes — Project 001**
+**Independent research and learning on AI security, safety, evaluation, and risk.**
 
-> Can passing a safety evaluation reliably predict safe behavior in unfamiliar scenarios?
+The Frontier Notes is a public research initiative documenting investigations into the behavior, security, and evaluation of AI systems.
 
-## Overview
-
-AI safety evaluations are essential for understanding model behavior. However, performance on a particular evaluation does not automatically establish how reliably a model will behave in unfamiliar situations.
-
-This project investigates the relationship between safety evaluation performance and behavioral generalization under controlled changes to evaluation scenarios.
-
-The objective is to develop a reproducible experimental framework, examine relevant research, and document empirical observations alongside limitations.
-
-## Research Question
-
-**How reliably does safety evaluation performance generalize to held-out scenarios that differ from the original evaluation conditions?**
-
-## Investigation
-
-The initial investigation will explore:
-
-- Baseline performance on defined safety evaluation scenarios.
-- Behavioral consistency under paraphrased scenarios.
-- Performance on held-out scenarios.
-- Differences between evaluation conditions.
-- Limitations of interpreting benchmark performance as evidence of generalization.
-
-## Research Workflow
-
-1. Review relevant literature.
-2. Define hypotheses and experimental methodology.
-3. Construct a controlled evaluation dataset.
-4. Implement an evaluation pipeline.
-5. Run experiments and analyze results.
-6. Document findings, limitations, and reproducibility.
-
-## Repository Structure
-
-- `research/` — Research questions, literature review, methodology, and limitations.
-- `data/` — Dataset documentation and evaluation scenarios.
-- `src/` — Evaluation implementation and metrics.
-- `experiments/` — Experimental configurations.
-- `results/` — Results documentation.
-- `reports/` — Research reports and findings.
-
-## Research Principles
-
-- Evidence over assumptions.
-- Reproducibility over unsupported claims.
-- Clear distinction between observations and interpretations.
-- Explicit documentation of limitations.
-- Responsible evaluation and handling of model outputs.
-
-## Status
-
-**Phase:** Literature review and experimental design.
-
-No empirical findings are claimed at this stage.
-
-## Author
-
-The Frontier Notes
-
-An independent research journey exploring AI security, safety evaluations, and frontier red-teaming.
+Each investigation follows a transparent process: research questions, existing literature, methodology, experimentation, findings, and limitations.
 
 ---
 
-*Research is a process of asking better questions, testing them carefully, and documenting what the evidence actually supports.*
+## Current Investigation
+
+### FN—001 — The Safety Evaluation Gap
+
+**Research question:**
+
+How reliably does safety evaluation performance generalize to held-out scenarios that differ from original evaluation conditions?
+
+This investigation examines the relationship between scenario selection, evaluation conditions, and measured safety performance.
+
+### Research Focus
+
+- Safety evaluation generalization
+- Prompt and scenario variation
+- Benchmark reliability
+- Held-out evaluation
+- Reproducibility and limitations
+
+---
+
+## Research Materials
+
+| Artifact | Description |
+|---|---|
+| [Research Question](research/research_question.md) | Research scope, questions, and hypotheses |
+| [Literature Review](research/literature_review.md) | Existing research, evidence, and positioning |
+| [Research Note](research/fn-001-research-note.md) | Investigation overview and methodology |
+| [Evaluation Pipeline](src/evaluate.py) | Initial evaluation code scaffold |
+| [Sample Scenarios](data/sample_scenarios.jsonl) | Synthetic structural examples |
+
+---
+
+## Research Status
+
+**Stage:** Research design and literature review
+
+No experimental findings are claimed at this stage.
+
+---
+
+## Research Principles
+
+- Evidence before conclusions.
+- Transparent methodology.
+- Explicit limitations.
+- Reproducible experimentation.
+- Clear separation between hypotheses and findings.
+
+---
+
+*The Frontier Notes — Building a deeper understanding of AI systems through research.*
