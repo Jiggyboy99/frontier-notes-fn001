@@ -1,88 +1,49 @@
+## Research Question
 
-# FN—001 | Research Question
+How reliably does safety evaluation performance generalize to held-out scenarios that differ from original evaluation conditions?
 
-## Project Title
+### Supporting Questions
 
-The Safety Evaluation Gap: Investigating Generalization Across AI Safety Evaluation Scenarios.
+- How sensitive are measured safety outcomes to semantically equivalent paraphrases?
+- How does performance on baseline scenarios compare with performance on held-out scenarios?
+- Do different scenario construction methods influence evaluation conclusions?
 
-## 1. Background
+## Experimental Design
 
-AI safety evaluations measure how models respond to selected prompts, scenarios, and tasks.
+The investigation proposes three evaluation conditions:
 
-However, evaluation performance may not fully characterize model behavior outside the conditions represented in a benchmark.
+| Condition | Description |
+|---|---|
+| Baseline | Original evaluation scenarios |
+| Paraphrase | Semantically equivalent reformulations |
+| Held-out | New scenarios testing related safety-relevant behavior |
 
-Changes in wording, context, or scenario structure may affect observed behavior. Understanding whether evaluation results generalize beyond their original conditions is important for interpreting safety claims.
+The comparison will use predefined evaluation criteria and consistent scoring procedures.
 
-This project investigates that question through controlled experiments.
+## Evaluation Metrics
 
-## 2. Primary Research Question
+The proposed analysis will examine:
 
-How reliably does safety evaluation performance generalize to held-out scenarios that differ from the original evaluation conditions?
-
-## 3. Supporting Questions
-
-- How consistent is model behavior across semantically equivalent paraphrases?
-- Does performance differ between familiar and held-out scenarios?
-- Which scenario transformations are associated with changes in measured performance?
-- How sensitive are observed results to evaluation design?
-
-## 4. Initial Hypotheses
-
-### H1 — Paraphrase Consistency
-
-Semantically equivalent scenario paraphrases may produce measurable differences in evaluation outcomes.
-
-### H2 — Held-Out Generalization
-
-Performance on evaluation scenarios may differ from performance on held-out scenarios.
-
-### H3 — Evaluation Sensitivity
-
-Observed safety evaluation results may be sensitive to scenario construction and evaluation conditions.
-
-These hypotheses are provisional and will be refined after reviewing existing literature.
-
-## 5. Experimental Scope
-
-Initial experiments will focus on:
-
-- Controlled, synthetic evaluation scenarios.
-- Clearly defined scenario categories.
-- Baseline and transformed evaluation conditions.
-- Held-out evaluation scenarios.
-- Reproducible measurement and analysis.
-
-## 6. Measurement
-
-Potential measurements include:
-
-- Evaluation pass rate.
-- Behavioral consistency.
+- Safety compliance rate.
 - Performance difference between evaluation conditions.
-- Generalization gap.
-- Inter-evaluator agreement, where applicable.
+- Consistency of responses across equivalent scenarios.
+- Agreement between evaluators, where feasible.
 
-Metrics will be formally defined in the methodology document.
+Metrics will be finalized before conducting the experiment.
 
-## 7. Research Boundaries
+## Analysis Plan
 
-This project does not assume that:
+The investigation will:
 
-- Passing an evaluation proves a model is universally safe.
-- Failing an evaluation automatically establishes dangerous behavior.
-- Every performance difference indicates a safety failure.
-- The proposed research question is novel before literature review.
+1. Establish baseline performance.
+2. Evaluate semantically equivalent paraphrases.
+3. Evaluate held-out scenarios.
+4. Compare condition-specific outcomes.
+5. Analyze observed differences and uncertainty.
+6. Document limitations and alternative explanations.
 
-Results will be interpreted within the experimental scope.
+## Expected Contribution
 
-## 8. Expected Contribution
+FN—001 aims to provide a transparent, reproducible investigation of how scenario selection and evaluation conditions influence measured safety performance.
 
-The intended contribution is a transparent, reproducible investigation of how safety evaluation results behave under controlled scenario changes.
-
-The project will publish its methodology, implementation, results, and limitations.
-
-## 9. Current Status
-
-**Stage:** Research framing.
-
-**Next stage:** Literature review and experimental design.
+No empirical findings are claimed until the experiment is conducted.
