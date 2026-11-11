@@ -113,6 +113,79 @@ Potential directions include:
 
 ## 6. Review Status
 
+
+## 7. Evidence Extracted from Initial Papers
+
+### SAGE-Eval
+
+**Source:** Chen, Davidson, and Lake — NeurIPS 2025.
+
+**Method:**
+- 104 safety facts sourced from reputable organizations.
+- 10,428 systematically constructed scenarios.
+- Seven common domains.
+- Evaluation of models on applying safety facts to unfamiliar situations.
+
+**Reported finding:**
+The strongest evaluated model, Claude 3.7 Sonnet, passed 58% of the safety facts tested.
+
+**Implication:**
+Safety behavior may fail to generalize even when the relevant safety facts are established.
+
+**Source:** https://arxiv.org/abs/2505.21828
+
+### SG-Bench
+
+**Source:** Mou, Zhang, and Ye — NeurIPS 2024.
+
+**Method:**
+- Combines generative and discriminative evaluation.
+- Examines diverse tasks and prompt types.
+- Evaluates proprietary and open-source models.
+
+**Reported finding:**
+The authors report differences across task types and susceptibility to prompting variations.
+
+**Implication:**
+Safety evaluation results depend partly on the evaluation task and prompting conditions.
+
+**Source:** https://arxiv.org/abs/2410.21965
+
+### Benchmark Robustness Study
+
+**Source:** Lunardi et al. — ECAI 2025.
+
+**Method:**
+- Six common capability benchmarks.
+- Thirty-four language models.
+- Systematic paraphrasing of benchmark questions.
+
+**Reported finding:**
+Absolute performance scores declined under paraphrasing, while model rankings remained relatively stable.
+
+**Important distinction:**
+This study examines general capability benchmarks rather than directly measuring safety behavior.
+
+**Implication:**
+Linguistic robustness is a relevant evaluation concern, but its findings should not automatically be transferred to safety benchmarks.
+
+**Source:** https://arxiv.org/abs/2509.04013
+
+## 8. Preliminary Research Assessment
+
+Existing research already addresses:
+- Safety generalization across scenarios.
+- Safety generalization across task types.
+- Sensitivity to prompting conditions.
+- Benchmark robustness under paraphrasing.
+
+Therefore, FN—001 requires a more specific experimental contribution.
+
+A potential direction is investigating how the method used to generate evaluation variants affects measured safety performance, while controlling semantic equivalence and scenario difficulty.
+
+This direction remains provisional pending deeper review.
+
+
 **Status:** Initial paper identification.
 
 **Next:** Read the papers, extract their methodologies and limitations, and refine FN—001.
