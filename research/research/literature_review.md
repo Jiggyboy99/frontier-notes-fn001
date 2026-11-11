@@ -1,192 +1,241 @@
-
 # FN—001 | Literature Review
+
+**The Safety Evaluation Gap**  
+The Frontier Notes · Research Note 001
 
 ## 1. Purpose
 
-This review examines existing research on safety evaluation, robustness, and generalization in large language models.
+This review examines existing research on safety evaluation, generalization, robustness, and benchmark reliability in large language models.
 
-Its purpose is to establish what is already known, identify methodological limitations, and determine whether FN—001 can contribute a meaningful empirical investigation.
+Its purpose is to establish what existing studies demonstrate, identify methodological limitations, and determine whether FN—001 can support a meaningful empirical investigation.
 
-## 2. Research Areas
+The review distinguishes between published findings, interpretations relevant to this investigation, and hypotheses requiring further testing.
+
+## 2. Scope
 
 The review focuses on:
 
 - Safety evaluation benchmarks.
-- Generalization of safety behavior.
-- Robustness to prompt transformations.
-- Evaluation reliability.
+- Generalization of safety-relevant behavior.
+- Robustness across prompt transformations.
+- Evaluation reliability and scoring.
 - Held-out scenario testing.
 - Limitations of benchmark-based conclusions.
 
-## 3. Initial Papers
+## 3. Existing Research
 
-### Paper 1 — SAGE-Eval
+### 3.1 SAGE-Eval: Generalization of Safety Facts
 
-**Title:** SAGE-Eval: Evaluating LLMs for Systematic Generalizations of Safety Facts
+**Authors:** Yueh-Han Chen, Guy Davidson, and Brenden M. Lake  
+**Venue:** NeurIPS 2025  
+**Paper:** [SAGE-Eval: Evaluating LLMs for Systematic Generalizations of Safety Facts](https://arxiv.org/abs/2505.21828)
 
-**Venue:** NeurIPS 2025
+#### Research objective
 
-**Link:** https://papers.neurips.cc/paper_files/paper/2025/hash/75a5df8d390c51d6aebfa2accb3f4911-Abstract-Datasets_and_Benchmarks_Track.html
+SAGE-Eval investigates whether language models can apply established safety facts to unfamiliar user scenarios.
 
-**Research focus:**
+#### Methodology
 
-Evaluates whether language models generalize established safety facts to novel situations.
+The benchmark contains:
 
-**Relevance to FN—001:**
+- 104 safety facts manually sourced from reputable organizations.
+- 10,428 systematically constructed scenarios.
+- Seven common domains, including medicine and outdoor activities.
 
-Provides a reference point for evaluating generalization of safety-relevant behavior beyond familiar formulations.
+The evaluation examines whether models appropriately apply relevant safety facts when responding to scenarios that may not explicitly mention those facts.
 
-**Questions for review:**
+#### Reported findings
 
-- How are safety facts selected?
-- How are novel scenarios constructed?
-- What constitutes successful generalization?
-- What limitations do the authors identify?
+The authors report that Claude 3.7 Sonnet, the strongest evaluated model, passed only 58% of the safety facts tested.
 
-### Paper 2 — SG-Bench
+The study also reports weak correlations between model capabilities, training compute, and performance on SAGE-Eval.
 
-**Title:** SG-Bench: Evaluating LLM Safety Generalization Across Diverse Tasks and Prompt Types
+#### Implications for FN—001
 
-**Venue:** NeurIPS 2024
+SAGE-Eval provides direct evidence that evaluating safety-related knowledge in familiar contexts does not necessarily establish reliable application to unfamiliar scenarios.
 
-**Link:** https://proceedings.neurips.cc/paper_files/paper/2024/hash/de7b99107c53e60257c727dc73daf1d1-Abstract-Datasets_and_Benchmarks_Track.html
+It establishes safety generalization as an existing and important research problem.
 
-**Research focus:**
+**Important distinction:** SAGE-Eval primarily evaluates the application of safety facts to novel situations. It does not directly answer whether performance on one safety benchmark predicts performance on another held-out evaluation set.
 
-Evaluates safety generalization across tasks and prompt types.
+---
 
-**Relevance to FN—001:**
+### 3.2 SG-Bench: Generalization Across Tasks and Prompt Types
 
-Provides existing methodologies for examining safety behavior under different evaluation conditions.
+**Authors:** Yutao Mou, Shikun Zhang, and Wei Ye  
+**Venue:** NeurIPS 2024  
+**Paper:** [SG-Bench: Evaluating LLM Safety Generalization Across Diverse Tasks and Prompt Types](https://arxiv.org/abs/2410.21965)
 
-**Questions for review:**
+#### Research objective
 
-- Which evaluation conditions are varied?
-- How are safety outcomes measured?
-- How does the benchmark distinguish different forms of generalization?
-- What limitations remain?
+SG-Bench examines safety generalization across different evaluation tasks and prompting conditions.
 
-### Paper 3 — Benchmark Robustness
+#### Methodology
 
-**Title:** On Robustness and Reliability of Benchmark-Based Evaluation of LLMs
+The benchmark combines:
 
-**Link:** https://arxiv.org/abs/2509.04013
+- Generative safety evaluation.
+- Discriminative safety evaluation.
+- Different prompt types.
+- Prompt engineering and jailbreak-related evaluation conditions.
 
-**Research focus:**
+The authors evaluate three advanced proprietary models and ten open-source models.
 
-Investigates changes in benchmark performance under paraphrased questions and implications for evaluation reliability.
+#### Reported findings
 
-**Relevance to FN—001:**
+The authors report that most evaluated models perform worse on discriminative tasks than generative tasks and exhibit substantial susceptibility to prompting variations.
 
-Provides a methodological reference for testing whether evaluation outcomes remain stable under linguistic variation.
+#### Implications for FN—001
 
-**Questions for review:**
+SG-Bench demonstrates that safety evaluation outcomes can vary across task formulations and prompting conditions.
 
-- How are paraphrases generated and validated?
-- Which performance metrics are used?
-- How are changes in absolute performance distinguished from changes in model rankings?
-- What implications are drawn for benchmark reliability?
+It supports examining evaluation conditions as an important factor when interpreting model safety performance.
 
-## 4. Preliminary Synthesis
+**Important distinction:** Task variation and prompt variation are not equivalent to held-out scenario generalization. FN—001 must explicitly distinguish these dimensions.
 
-The initial literature indicates that:
+---
 
-1. Safety generalization is already being studied directly.
-2. Evaluation outcomes can be sensitive to changes in prompts and tasks.
-3. Benchmark performance should not automatically be interpreted as evidence of universal behavioral reliability.
-4. Existing benchmarks provide useful methodological foundations for further investigation.
+### 3.3 Benchmark Robustness Under Paraphrasing
 
-These observations are preliminary and must be supported by a fuller review.
+**Authors:** Riccardo Lunardi, Vincenzo Della Mea, Stefano Mizzaro, and Kevin Roitero  
+**Venue:** ECAI 2025  
+**Paper:** [On Robustness and Reliability of Benchmark-Based Evaluation of LLMs](https://arxiv.org/abs/2509.04013)
+
+#### Research objective
+
+The study investigates whether benchmark-based evaluations remain reliable when questions are paraphrased.
+
+#### Methodology
+
+The authors examine:
+
+- Six general-purpose benchmarks.
+- Thirty-four language models.
+- Systematically generated paraphrases.
+- Changes in absolute performance.
+- Stability of model rankings.
+
+#### Reported findings
+
+The study reports that:
+
+- Absolute benchmark performance declines significantly under paraphrasing.
+- Relative model rankings remain comparatively stable.
+- Original benchmark scores may overestimate performance under linguistic variation.
+
+#### Implications for FN—001
+
+The study provides a methodological foundation for investigating whether evaluation conclusions remain stable when scenarios are reformulated.
+
+It also motivates distinguishing absolute performance changes from ranking changes.
+
+**Important distinction:** This study examines general capability benchmarks rather than directly measuring safety behavior. Its findings cannot automatically be transferred to safety evaluations.
+
+---
+
+## 4. Cross-Paper Synthesis
+
+The reviewed studies address related but distinct evaluation problems.
+
+| Research | Evaluation dimension | Central concern |
+|---|---|---|
+| SAGE-Eval | Novel safety scenarios | Application of safety facts beyond familiar situations |
+| SG-Bench | Tasks and prompt types | Generalization across evaluation conditions |
+| Lunardi et al. | Paraphrased benchmark questions | Reliability of performance scores under linguistic variation |
+
+Three observations emerge.
+
+**First, safety generalization is an established concern.** Models may fail to apply safety-relevant knowledge reliably when scenario conditions change.
+
+**Second, evaluation conditions influence measured performance.** Prompt type, task formulation, and question wording can affect evaluation outcomes.
+
+**Third, benchmark performance is conditional evidence.** Results should be interpreted in relation to the scenarios, transformations, and scoring procedures used.
+
+However, these studies investigate different dimensions of generalization and robustness. Their findings should not be treated as interchangeable.
+
+---
 
 ## 5. Research Gap Assessment
 
-No novel contribution is claimed at this stage.
+### 5.1 What is already established?
 
-The next step is to compare existing evaluation approaches and identify a narrower question that can be investigated reproducibly.
+Existing research already investigates:
 
-Potential directions include:
+- Generalization of safety facts to novel scenarios.
+- Safety behavior across task types and prompting conditions.
+- Sensitivity of general capability benchmarks to paraphrasing.
+- Limitations of interpreting fixed benchmark scores as comprehensive evidence of model capability.
 
-- Comparing different scenario transformation methods.
-- Examining how scenario difficulty affects measured generalization.
-- Investigating evaluator agreement under transformed scenarios.
-- Studying the reliability of specific safety evaluation metrics.
+FN—001 therefore does not claim that safety generalization or benchmark sensitivity is a newly discovered problem.
 
-## 6. Review Status
+### 5.2 What remains interesting?
 
+An important methodological question concerns the relationship between evaluation scenario selection and measured safety performance.
 
-## 7. Evidence Extracted from Initial Papers
+Specifically, it is worth investigating whether conclusions drawn from a baseline safety evaluation remain dependable when tested against:
 
-### SAGE-Eval
+1. Semantically equivalent paraphrases.
+2. Held-out scenarios involving related safety-relevant behavior.
+3. Different scenario construction procedures.
 
-**Source:** Chen, Davidson, and Lake — NeurIPS 2025.
+This raises questions about the predictive value of baseline evaluation performance, the effect of scenario selection, and the interpretation of performance differences.
 
-**Method:**
-- 104 safety facts sourced from reputable organizations.
-- 10,428 systematically constructed scenarios.
-- Seven common domains.
-- Evaluation of models on applying safety facts to unfamiliar situations.
+### 5.3 Proposed positioning
 
-**Reported finding:**
-The strongest evaluated model, Claude 3.7 Sonnet, passed 58% of the safety facts tested.
+FN—001 is provisionally positioned as a controlled investigation of:
 
-**Implication:**
-Safety behavior may fail to generalize even when the relevant safety facts are established.
+**How does measured safety performance change across original evaluation scenarios, semantically equivalent paraphrases, and held-out scenarios designed to test related safety-relevant behavior?**
 
-**Source:** https://arxiv.org/abs/2505.21828
+The proposed investigation would compare evaluation conditions using predefined scoring criteria and transparent scenario construction procedures.
 
-### SG-Bench
+This positioning is provisional. A broader literature search is required before claiming a distinct research contribution.
 
-**Source:** Mou, Zhang, and Ye — NeurIPS 2024.
+---
 
-**Method:**
-- Combines generative and discriminative evaluation.
-- Examines diverse tasks and prompt types.
-- Evaluates proprietary and open-source models.
+## 6. Methodological Implications
 
-**Reported finding:**
-The authors report differences across task types and susceptibility to prompting variations.
+The reviewed literature motivates the following design principles:
 
-**Implication:**
-Safety evaluation results depend partly on the evaluation task and prompting conditions.
+- Distinguish linguistic variation from changes in scenario meaning.
+- Validate semantic equivalence between original and paraphrased scenarios.
+- Define held-out scenarios separately from paraphrases.
+- Use consistent evaluation criteria across conditions.
+- Report absolute performance and condition-specific differences.
+- Document scenario selection and construction.
+- Assess scoring reliability where feasible.
+- Avoid interpreting benchmark performance as proof of universal safety.
 
-**Source:** https://arxiv.org/abs/2410.21965
+These principles will inform the design of the FN—001 experiment.
 
-### Benchmark Robustness Study
+---
 
-**Source:** Lunardi et al. — ECAI 2025.
+## 7. Limitations of This Review
 
-**Method:**
-- Six common capability benchmarks.
-- Thirty-four language models.
-- Systematic paraphrasing of benchmark questions.
+This document represents an initial literature review rather than a systematic review.
 
-**Reported finding:**
-Absolute performance scores declined under paraphrasing, while model rankings remained relatively stable.
+The selected studies provide useful foundations but do not cover every relevant safety evaluation methodology.
 
-**Important distinction:**
-This study examines general capability benchmarks rather than directly measuring safety behavior.
+Further investigation is required to:
 
-**Implication:**
-Linguistic robustness is a relevant evaluation concern, but its findings should not automatically be transferred to safety benchmarks.
+- Identify additional overlapping research.
+- Examine alternative scenario-generation approaches.
+- Review scoring and evaluator reliability.
+- Determine whether the proposed experimental design offers a sufficiently distinct contribution.
 
-**Source:** https://arxiv.org/abs/2509.04013
+No novelty claim is made at this stage.
 
-## 8. Preliminary Research Assessment
+---
 
-Existing research already addresses:
-- Safety generalization across scenarios.
-- Safety generalization across task types.
-- Sensitivity to prompting conditions.
-- Benchmark robustness under paraphrasing.
+## 8. References
 
-Therefore, FN—001 requires a more specific experimental contribution.
+1. Chen, Y.-H., Davidson, G., & Lake, B. M. (2025). *SAGE-Eval: Evaluating LLMs for Systematic Generalizations of Safety Facts.* NeurIPS 2025. https://arxiv.org/abs/2505.21828
 
-A potential direction is investigating how the method used to generate evaluation variants affects measured safety performance, while controlling semantic equivalence and scenario difficulty.
+2. Mou, Y., Zhang, S., & Ye, W. (2024). *SG-Bench: Evaluating LLM Safety Generalization Across Diverse Tasks and Prompt Types.* NeurIPS 2024. https://arxiv.org/abs/2410.21965
 
-This direction remains provisional pending deeper review.
+3. Lunardi, R., Della Mea, V., Mizzaro, S., & Roitero, K. (2025). *On Robustness and Reliability of Benchmark-Based Evaluation of LLMs.* ECAI 2025. https://arxiv.org/abs/2509.04013
 
+---
 
-**Status:** Initial paper identification.
+**Review status:** Initial literature review and preliminary research positioning completed.
 
-**Next:** Read the papers, extract their methodologies and limitations, and refine FN—001.
-
+**Next milestone:** Refine the experimental question, establish evaluation criteria, and design the scenario comparison.
