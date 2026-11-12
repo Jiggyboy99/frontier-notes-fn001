@@ -8,15 +8,19 @@ The Frontier Notes is a public research initiative documenting investigations in
 
 Each investigation follows a transparent process: research questions, existing literature, methodology, experimentation, findings, and limitations.
 
+The objective is to develop meaningful research questions, examine existing evidence, conduct reproducible investigations, and communicate findings responsibly.
+
 ---
 
 ## Current Investigation
 
 ### FN—001 — The Safety Evaluation Gap
 
-**Research question:**
+**Research question**
 
 How reliably does safety evaluation performance generalize to held-out scenarios that differ from original evaluation conditions?
+
+Safety evaluations provide evidence about model behavior under specific conditions. However, performance on original evaluation scenarios does not automatically establish reliable behavior across unfamiliar scenarios.
 
 This investigation examines the relationship between scenario selection, evaluation conditions, and measured safety performance.
 
@@ -30,33 +34,63 @@ This investigation examines the relationship between scenario selection, evaluat
 
 ---
 
-## Research Materials
+## Investigation Framework
 
-| Artifact | Description |
+| Evaluation Condition | Purpose |
 |---|---|
-| [Research Question](research/research_question.md) | Research scope, questions, and hypotheses |
-| [Literature Review](research/literature_review.md) | Existing research, evidence, and positioning |
-| [Research Note](research/fn-001-research-note.md) | Investigation overview and methodology |
-| [Evaluation Pipeline](src/evaluate.py) | Initial evaluation code scaffold |
-| [Sample Scenarios](data/sample_scenarios.jsonl) | Synthetic structural examples |
+| Baseline | Establish performance on original evaluation scenarios |
+| Paraphrase | Examine sensitivity to alternative wording |
+| Held-out | Examine generalization beyond original evaluation scenarios |
+
+These conditions examine different aspects of evaluation reliability and should not be treated as interchangeable.
 
 ---
 
-## Research Status
+## Research Materials
 
-**Stage:** Research design and literature review
+| Artifact | Description | Status |
+|---|---|---|
+| [Research Question](research/research_question.md) | Research scope, questions, and hypotheses | Defined |
+| [Literature Review](research/literature_review.md) | Existing research, evidence, and positioning | Initial review completed |
+| [Research Note](research/fn-001-research-note.md) | Investigation overview and proposed methodology | In development |
+| [Evaluation Pipeline](src/evaluate.py) | Initial evaluation code scaffold | Prototype |
+| [Sample Scenarios](data/sample_scenarios.jsonl) | Synthetic structural examples | Illustrative only |
 
-No experimental findings are claimed at this stage.
+---
+
+## Research Progress
+
+| Stage | Status |
+|---|---|
+| Research question | Defined |
+| Initial literature review | Completed |
+| Research framing | In progress |
+| Methodology development | In progress |
+| Experimental evaluation | Not started |
+| Results and analysis | Pending |
+
+**Current stage:** Research design and methodology development.
+
+No empirical findings are claimed at this stage.
 
 ---
 
 ## Research Principles
 
 - Evidence before conclusions.
+- Existing literature before novelty claims.
 - Transparent methodology.
 - Explicit limitations.
 - Reproducible experimentation.
 - Clear separation between hypotheses and findings.
+
+---
+
+## Follow the Investigation
+
+**Repository:** [The Frontier Notes — FN—001](https://github.com/Jiggyboy99/frontier-notes-fn001)
+
+Research materials, methodology, experiments, and findings will be updated as the investigation progresses.
 
 ---
 
