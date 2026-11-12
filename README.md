@@ -11,7 +11,13 @@ Each investigation follows a transparent process: research questions, existing l
 The objective is to develop meaningful research questions, examine existing evidence, conduct reproducible investigations, and communicate findings responsibly.
 
 ---
+## Investigation Visual
 
+![FN-001 Evaluation Framework](assets/fn-001/The%20Safety%20Evaluation%20Gap-1.png)
+
+*Baseline, paraphrase, and held-out evaluation conditions.*
+
+---
 ## Current Investigation
 
 ### FN—001 — The Safety Evaluation Gap
